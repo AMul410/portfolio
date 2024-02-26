@@ -1,55 +1,107 @@
 ---
 import { Image } from "astro:assets";
-import AMulholland from "../assets/AMulholland.jpg";
+import me from "../assets/AMulholland.jpg";
 ---
 
 <section class="hero">
-    <div class="hero-image">
-        <Image src={AMulholland} alt="It's me" id={"me-image"}/>
-        
-    </div><div class="hero-image">
-     
-    <div class="hero-text">
-        <h1>About Me</h1>
-        <div>
-            <p>Hello, my Name is Alex Mulholland. I am a Brit living in Germany, currently learning to be a .........</p>
-            <p>For the majoity of my adult life I have been employed in a completely different genre. For the last 26 years I have been working in one form or another in Pastoral services. I am an ordaned Pastor and have had the pleassure  to work with many different people.</p>
-            <p></p>
-            <p></p>
+    
+        <div class="hero-image">
+            <Image src={me} alt="Ich, einfach unverbesserlich." id={"me-image"}/>
         </div>
-    </div>
+        <div class="hero-text">
+        <p class="greeting">Hi, I am</p>
+        <h2>Alex Mulholland</h2>
+        <h3>
+          Pastor; Programmer; 
+        </h3>
+        <p>
+          Leidenschaftlicher Beibringer von Wissen und Programmierer. In meiner Welt
+          verschmelzen Technologie und Bildung zu einzigartigen Erlebnissen. Stets
+          auf der Suche nach neuen Herausforderungen und Wegen, um Wissen
+          spielerisch zu vermitteln.
+        </p>
+      </div>
     
 </section>
     
 <style>
     section.hero {
+        margin-top: 4rem;
         margin-bottom: 4rem;
         display: flex;
         flex-direction: row;
         height: 90vh;
+        overflow-y: hidden;
     }
-
     section.hero > div.hero-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         max-width: 50vw;
-        margin: 0 4rem 0 auto;
-    }
-    div.hero-text >h1 {
-        margin-top: 0;
+        margin: 0 5vw 0 5vw;
+        position: relative;
+        z-index: -2;
     }
     section.hero > div.hero-image {
         width: 50vw;
-        margin: 0 4rem 0 auto;
+        position: relative;
+        z-index: 10;
+    }
+    .hero-text > * {
+        text-align: center;
+    }
+    .hero-text > :not(:last-child) {
+        line-height: 100%;
+    }
+    .hero-text > p.greeting {
+        font-size: 1.4em;
+        color: #09b609;
+        margin: 0;
+    }
+    .hero-text > h2 {
+        margin-top: .5rem;
+        font-size: 3em;
+        font-weight: 800;
+        margin: .5rem 0 1.4rem 0;
+    }
+    .hero-text > h3 {
+        color: rgb(9, 182, 9);
+        font-size: 1.4em;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin: 0 0 1rem 0;
     }
     .hero-text p {
         max-width: 45ch;
+        font-size: 1.1em;
     }
     .hero-image > #me-image {
         object-fit: cover;
-        height: 100%;
-        overflow-x: hidden;
+        height: 90%;
         width: 100%;
         border-radius: 2rem;
-        box-shadow: 10px 10px 20px #3586ff;
-        
+        box-shadow: 15px 15px 30px #09b609
+    }
+    @media only screen and (max-width: 900px) {
+        section.hero {
+            flex-direction: column;
+            font-size: .9em;
+            overflow-y: auto;
+            height: fit-content;
+        }
+        section.hero > div.hero-text {
+            max-width: none;
+            margin: 0 1rem;
+            position: static;
+        }
+        section.hero > div.hero-image {
+            width: 100%;
+            position: static;
+            margin-bottom: 2rem;
+        }
+        .hero-text p {
+            width: 100%;
+            max-width: none;
+        }
     }
 </style>
